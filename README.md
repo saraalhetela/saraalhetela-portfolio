@@ -8,7 +8,7 @@ Check out the site here: **[Insert Your GitHub Pages URL Here]**
 
 ---
 
-## 🛠️ Built With
+##  Built With
 
 *   **HTML** - Semantic structure
 *   **CSS** - Custom styling and responsive layout
@@ -16,7 +16,7 @@ Check out the site here: **[Insert Your GitHub Pages URL Here]**
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```text
 portfolio/
@@ -29,5 +29,5 @@ portfolio/
 │   └── pixel-me.png    # Profile avatar
 ├── files/
 │   └── Sara Alhetela — CV.pdf  # Professional resume
-├── favicon_ico/
+└── favicon_ico/
     └── favicon.ico         # Browser tab icon
