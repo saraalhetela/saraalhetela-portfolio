@@ -86,11 +86,22 @@ function startPipeline() {
 function drawTradingChart() {
   const c = document.getElementById('tradingCanvas');
   if (!c) return;
-  const parent = c.parentElement;
-  c.width = parent.offsetWidth;
-  c.height = parent.offsetHeight;
-  const cx = c.getContext('2d');
-  const W = c.width, H = c.height;
+    const parent = c.parentElement;
+    const dpr = window.devicePixelRatio || 1;
+
+    const cssW = parent.offsetWidth;
+    const cssH = parent.offsetHeight;
+
+    c.width = cssW * dpr;
+    c.height = cssH * dpr;
+    c.style.width = cssW + 'px';
+    c.style.height = cssH + 'px';
+
+    const cx = c.getContext('2d');
+    cx.scale(dpr, dpr);
+
+    const W = cssW;
+    const H = cssH;
 
   // Real profit curve shape from your results plot (870% peak, upward trend)
   const rawProfit = [
