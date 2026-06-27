@@ -123,10 +123,14 @@
             <span class="tag">DQN</span><span class="tag">CUDA</span>
           </div>
           <h3>Dueling Conv1D DQN Trading Agent</h3>
-          <p class="card-desc">A deep reinforcement learning agent for algorithmic trading. Uses a Dueling Conv1D Q-Network with N-step returns and reward shaping, penalizing losses directly rather than just wrong predictions. Trained on 150k steps of AAPL data with CUDA GPU acceleration. Experiment tracking with MLflow.</p>
+          <p class="card-desc">A deep reinforcement learning agent for algorithmic trading. Uses a Dueling Conv1D Q-Network with N-step returns and profit-focused reward shaping. Trained on 150k steps of AAPL data with CUDA GPU acceleration. Peak cumulative profit of 870% on the evaluation set.</p>
         </div>
         <div class="card-footer">
-          <div class="card-stat">Training: <span>150k steps</span> &nbsp;·&nbsp; Asset: <span>AAPL</span></div>
+          <div class="card-stat">
+            Training: <span>150k steps</span> &nbsp;·&nbsp;
+            Asset: <span>AAPL</span> &nbsp;·&nbsp;
+            Peak profit: <span>+870%</span>
+          </div>
           <a href="https://github.com/saraalhetela/dueling-dqn-stock-trader" target="_blank" class="card-link">View on GitHub ↗</a>
         </div>
       </div>
