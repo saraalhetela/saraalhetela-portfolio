@@ -87,84 +87,115 @@ function drawTradingChart() {
   const c = document.getElementById('tradingCanvas');
   if (!c) return;
   const parent = c.parentElement;
-  c.width = parent.offsetWidth; c.height = parent.offsetHeight;
+  c.width = parent.offsetWidth;
+  c.height = parent.offsetHeight;
   const cx = c.getContext('2d');
   const W = c.width, H = c.height;
-  const pts = 80;
 
-  // Generate fake price + profit data
-  let price = 180, profit = 0;
-  const prices = [], profits = [], actions = [];
-  for (let i = 0; i < pts; i++) {
-    price += (Math.random() - 0.48) * 3;
-    price = Math.max(160, Math.min(220, price));
-    prices.push(price);
-    const act = Math.random() > 0.7 ? (Math.random() > 0.5 ? 'buy' : 'sell') : 'hold';
-    actions.push(act);
-    if (act === 'buy') profit -= 2;
-    else if (act === 'sell') profit += 4;
-    profits.push(profit);
-  }
+  // Real profit curve shape from your results plot (870% peak, upward trend)
+  const rawProfit = [
+    100,230,160,250,200,170,220,180,110,100,
+    200,190,260,280,220,210,230,300,250,220,
+    210,230,220,300,310,290,400,380,460,420,
+    390,460,400,380,430,410,390,450,470,420,
+    440,510,480,430,490,540,520,500,550,530,
+    480,510,490,560,540,510,560,480,510,540,
+    590,620,600,660,640,680,720,660,640,650,
+    600,580,420,560,540,640,810,850,660,800,
+    830,860,840,850,870,820,860,840,750,700,
+    860,830,700,320,700,870,840,810,750,870
+  ];
 
-  const pad = 32;
-  const priceMin = Math.min(...prices) - 5, priceMax = Math.max(...prices) + 5;
-  const profMin = Math.min(...profits) - 2, profMax = Math.max(...profits) + 2;
+  const pts = rawProfit.length;
+  const pad = { top: 28, right: 20, bottom: 36, left: 48 };
+  const cW = W - pad.left - pad.right;
+  const cH = H - pad.top - pad.bottom;
 
-  function px(i) { return pad + (i/(pts-1)) * (W - pad*2); }
-  function py(v, mn, mx) { return H - pad - ((v-mn)/(mx-mn)) * (H - pad*2); }
+  const profMin = 0;
+  const profMax = 950;
+
+  function px(i) { return pad.left + (i / (pts - 1)) * cW; }
+  function py(v) { return pad.top + cH - ((v - profMin) / (profMax - profMin)) * cH; }
+
+  cx.clearRect(0, 0, W, H);
 
   // Background
-  cx.fillStyle = '#030711'; cx.fillRect(0,0,W,H);
+  cx.fillStyle = '#030711';
+  cx.fillRect(0, 0, W, H);
 
   // Grid lines
-  cx.strokeStyle = 'rgba(30,41,59,0.5)'; cx.lineWidth = 1;
-  for (let g = 0; g <= 4; g++) {
-    const y = pad + g * (H - pad*2) / 4;
-    cx.beginPath(); cx.moveTo(pad, y); cx.lineTo(W-pad, y); cx.stroke();
+  const gridCount = 4;
+  for (let i = 0; i <= gridCount; i++) {
+    const y = pad.top + (i / gridCount) * cH;
+    const val = Math.round(profMax - (i / gridCount) * (profMax - profMin));
+    cx.beginPath();
+    cx.strokeStyle = 'rgba(255,255,255,0.05)';
+    cx.lineWidth = 1;
+    cx.moveTo(pad.left, y);
+    cx.lineTo(pad.left + cW, y);
+    cx.stroke();
+    cx.fillStyle = 'rgba(148,163,184,0.5)';
+    cx.font = '10px monospace';
+    cx.textAlign = 'right';
+    cx.fillText(val + '%', pad.left - 6, y + 3);
   }
 
-  // Labels
-  cx.font = '10px DM Mono, monospace';
-  cx.fillStyle = '#94a3b8';
-  cx.fillText('PRICE', pad, 18);
+  // X axis labels
+  const xLabels = [0, 25, 50, 75, 100, 125, 150, 175];
+  xLabels.forEach(v => {
+    const i = Math.round((v / 175) * (pts - 1));
+    const x = px(i);
+    cx.fillStyle = 'rgba(148,163,184,0.5)';
+    cx.font = '10px monospace';
+    cx.textAlign = 'center';
+    cx.fillText(v, x, H - 8);
+  });
+
+  // Profit area fill
+  const grad = cx.createLinearGradient(0, pad.top, 0, pad.top + cH);
+  grad.addColorStop(0, 'rgba(56,189,248,0.18)');
+  grad.addColorStop(1, 'rgba(56,189,248,0)');
+  cx.beginPath();
+  cx.moveTo(px(0), py(rawProfit[0]));
+  for (let i = 1; i < pts; i++) cx.lineTo(px(i), py(rawProfit[i]));
+  cx.lineTo(px(pts - 1), pad.top + cH);
+  cx.lineTo(px(0), pad.top + cH);
+  cx.closePath();
+  cx.fillStyle = grad;
+  cx.fill();
+
+  // Profit line
+  cx.beginPath();
+  cx.moveTo(px(0), py(rawProfit[0]));
+  for (let i = 1; i < pts; i++) cx.lineTo(px(i), py(rawProfit[i]));
+  cx.strokeStyle = '#38bdf8';
+  cx.lineWidth = 1.5;
+  cx.lineJoin = 'round';
+  cx.stroke();
+
+  // Peak marker
+  const peakIdx = rawProfit.indexOf(Math.max(...rawProfit));
+  const peakX = px(peakIdx);
+  const peakY = py(Math.max(...rawProfit));
+  cx.beginPath();
+  cx.arc(peakX, peakY, 4, 0, Math.PI * 2);
   cx.fillStyle = '#38bdf8';
-  cx.fillText('PROFIT', W/2, 18);
-
-  // Price line
-  cx.beginPath(); cx.strokeStyle = 'rgba(100,160,200,0.5)'; cx.lineWidth = 1.5;
-  prices.forEach((p,i) => {
-    i===0 ? cx.moveTo(px(i), py(p, priceMin, priceMax)) : cx.lineTo(px(i), py(p, priceMin, priceMax));
-  });
+  cx.fill();
+  cx.strokeStyle = '#030711';
+  cx.lineWidth = 1.5;
   cx.stroke();
 
-  // Profit line with gradient
-  const grad = cx.createLinearGradient(0,0,0,H);
-  grad.addColorStop(0, 'rgba(56,189,248,0.8)');
-  grad.addColorStop(1, 'rgba(56,189,248,0.1)');
-  cx.beginPath(); cx.strokeStyle = '#38bdf8'; cx.lineWidth = 2;
-  profits.forEach((p,i) => {
-    i===0 ? cx.moveTo(px(i), py(p, profMin, profMax)) : cx.lineTo(px(i), py(p, profMin, profMax));
-  });
-  cx.stroke();
+  // Peak label
+  cx.fillStyle = '#38bdf8';
+  cx.font = '600 11px monospace';
+  cx.textAlign = 'center';
+  cx.fillText('+870%', peakX, peakY - 10);
 
-  // Buy/sell dots
-  actions.forEach((a,i) => {
-    if (a === 'buy') {
-      cx.beginPath(); cx.arc(px(i), py(prices[i], priceMin, priceMax), 3, 0, Math.PI*2);
-      cx.fillStyle = '#10b981'; cx.fill();
-    } else if (a === 'sell') {
-      cx.beginPath(); cx.arc(px(i), py(prices[i], priceMin, priceMax), 3, 0, Math.PI*2);
-      cx.fillStyle = '#f59e0b'; cx.fill();
-    }
-  });
-
-  // Legend
-  cx.fillStyle = '#10b981'; cx.fillRect(pad, H-18, 8, 8);
-  cx.fillStyle = '#94a3b8'; cx.font = '9px DM Mono, monospace'; cx.fillText('BUY', pad+12, H-11);
-  cx.fillStyle = '#f59e0b'; cx.fillRect(pad+50, H-18, 8, 8);
-  cx.fillStyle = '#94a3b8'; cx.fillText('SELL', pad+62, H-11);
-  cx.fillStyle = '#38bdf8'; cx.fillRect(pad+108, H-18, 8, 8);
-  cx.fillStyle = '#94a3b8'; cx.fillText('PROFIT', pad+120, H-11);
+  // Chart title
+  cx.fillStyle = 'rgba(148,163,184,0.6)';
+  cx.font = '10px monospace';
+  cx.textAlign = 'left';
+  cx.fillText('Cumulative Profit (%)', pad.left, 16);
 }
 window.addEventListener('resize', drawTradingChart);
 
