@@ -215,7 +215,6 @@ emailjs.init({
     publicKey: "Mw90fut9b6KqLmFHz"
 });
 // ── CONTACT FORM ─────────────────────────────────────────────────────────
-function submitForm(e) {
 document.addEventListener("DOMContentLoaded", () => {
     document
         .getElementById("contactForm")
@@ -241,7 +240,6 @@ function submitForm(e) {
         }
     )
     .then(() => {
-
         btn.innerText = "✓ Message Sent!";
         btn.style.background = "#10b981";
 
@@ -252,10 +250,8 @@ function submitForm(e) {
             btn.innerText = originalText;
             btn.style.background = "";
         }, 4000);
-
     })
     .catch((error) => {
-
         console.error("EmailJS Error:", error);
 
         alert("Sorry, your message couldn't be sent. Please try again.");
@@ -263,7 +259,6 @@ function submitForm(e) {
         btn.disabled = false;
         btn.innerText = originalText;
         btn.style.background = "";
-
     });
 }
 // ── Typewriter Effect ─────────────────────────────────────────────────────────
