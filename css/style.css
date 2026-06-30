@@ -234,7 +234,7 @@
   .card-footer { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 0.75rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
   .card-stat { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); }
   .card-stat span { color: var(--accent); }
-  .card-link { font-family: var(--mono); font-size: 0.78rem; color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+  .card-link { display: inline-block; font-family: var(--mono); font-size: 0.78rem; color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
   .card-link:hover { opacity: 0.7; }
 
   /* ── TRADING AGENT CANVAS PREVIEW ── */
