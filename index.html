@@ -455,33 +455,89 @@
 </section>
 
 <!-- CONTACT -->
+<!-- CONTACT -->
 <section id="connect">
   <div class="section-label">Get in Touch</div>
+
   <div class="connect-container">
+
     <div class="connect-info">
       <h3>Let's Talk</h3>
-      <p>Open to Data Scientist, ML Engineer, and AI Engineer roles, remote or on-site.. Feel free to reach out directly or use the form.</p>
-      <div class="contact-method"><span>✉</span><a href="mailto:Alhetelasara@gmail.com">Alhetelasara@gmail.com</a></div>
-      <div class="contact-method"><span>💻</span><a href="https://github.com/saraalhetela" target="_blank">github.com/saraalhetela ↗</a></div>
-      <div class="contact-method"><span>🔗</span><a href="https://linkedin.com/in/sara-a-262b55234" target="_blank">linkedin.com/in/sara-a-262b55234 ↗</a></div>
+
+      <p>
+        Open to Data Scientist, ML Engineer, and AI Engineer roles,
+        remote or on-site. Feel free to reach out directly or use the
+        form.
+      </p>
+
+      <div class="contact-method">
+        <span>✉</span>
+        <a href="mailto:Alhetelasara@gmail.com">
+          Alhetelasara@gmail.com
+        </a>
+      </div>
+
+      <div class="contact-method">
+        <span>💻</span>
+        <a href="https://github.com/saraalhetela" target="_blank">
+          github.com/saraalhetela ↗
+        </a>
+      </div>
+
+      <div class="contact-method">
+        <span>🔗</span>
+        <a href="https://linkedin.com/in/sara-a-262b55234" target="_blank">
+          linkedin.com/in/sara-a-262b55234 ↗
+        </a>
+      </div>
     </div>
+
     <div class="connect-form">
-      <form class="cyber-form" id="contactForm" onsubmit="submitForm(event)">
+
+      <form id="contactForm" class="cyber-form">
+
         <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" class="cyber-input" id="senderName" required placeholder="Your name">
+          <label for="senderName">Your Name</label>
+          <input
+            type="text"
+            id="senderName"
+            class="cyber-input"
+            required
+          >
         </div>
+
         <div class="form-group">
-          <label>Your Email</label>
-          <input type="email" class="cyber-input" id="senderEmail" required placeholder="your@email.com">
+          <label for="senderEmail">Your Email</label>
+          <input
+            type="email"
+            id="senderEmail"
+            class="cyber-input"
+            required
+          >
         </div>
+
         <div class="form-group">
-          <label>Message</label>
-          <textarea class="cyber-input" id="senderMessage" required placeholder="What would you like to discuss?"></textarea>
+          <label for="senderMessage">Message</label>
+          <textarea
+            id="senderMessage"
+            class="cyber-input"
+            rows="6"
+            required
+          ></textarea>
         </div>
-        <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          id="submitBtn"
+        >
+          Send Message
+        </button>
+
       </form>
+
     </div>
+
   </div>
 </section>
 
@@ -492,7 +548,7 @@
     <a href="https://linkedin.com/in/sara-a-262b55234" target="_blank">LinkedIn</a>
     <a href="mailto:Alhetelasara@gmail.com">Email</a>
   </div>
-</footer>
+</footer><script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
