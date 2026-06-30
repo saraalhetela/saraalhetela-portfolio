@@ -68,7 +68,7 @@ function startPipeline() {
       i++;
       setTimeout(activateNext, 800);
     } else {
-      document.getElementById('ppAccVal').innerText = '99.4%';
+      document.getElementById('ppAccVal').innerText = '99.5%';
       setTimeout(() => {
         steps.forEach(s => {
           document.getElementById('pp'+s).classList.remove('active','done');
