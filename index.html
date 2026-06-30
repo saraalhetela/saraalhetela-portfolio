@@ -90,10 +90,11 @@
             <span class="tag">CatBoost</span><span class="tag">SMOTE</span>
           </div>
           <h3>Oil Well Cement Mix Predictor</h3>
-          <p class="card-desc">A 3-stage ML pipeline built and deployed at TAQA. Takes well engineering parameters as input and outputs cement additives, product variants, and concentrations. Replaced a manual expert process that blocked every pre-construction cycle. 18 ensemble classifiers with per-target hyperparameter tuning, SMOTE/ADASYN resampling, MLflow experiment tracking, and a Flask interface used directly by field engineers.</p>
+          <p class="card-desc">A 3-stage ML pipeline built and deployed at TAQA. Takes well engineering parameters as input and outputs cement additives, chemical variants, and concentration ranges. Replaced a manual expert review process that blocked every pre-construction drilling cycle. 18 ensemble classifiers with per-target hyperparameter tuning, SMOTE/ADASYN resampling, and a Flask web interface used directly by field engineers.</p>
         </div>
         <div class="card-footer">
           <div class="card-stat">Top accuracy: <span>99.4%</span> &nbsp;·&nbsp; Deployed at <span>TAQA</span></div>
+          <a href="https://github.com/saraalhetela/Oil-Well-Cement-Mix-Predictor" target="_blank" class="card-link">View on GitHub ↗</a>
         </div>
       </div>
       <div class="pc-preview">
@@ -101,7 +102,7 @@
           <div class="pipeline-preview" id="pipelinePreview">
             <div class="pp-title">Live Pipeline Simulation</div>
             <div class="pp-step" id="pp0"><div class="pp-dot"></div><span class="pp-label">Input: Well Parameters</span><span class="pp-val">10 features</span></div>
-            <div class="pp-step" id="pp1"><div class="pp-dot"></div><span class="pp-label">Stage 1 — Additive Categories</span><span class="pp-val">17 classifiers</span></div>
+            <div class="pp-step" id="pp1"><div class="pp-dot"></div><span class="pp-label">Stage 1 — Additive Categories</span><span class="pp-val">18 classifiers</span></div>
             <div class="pp-step" id="pp2"><div class="pp-dot"></div><span class="pp-label">Stage 2 — Product Variants</span><span class="pp-val">5 models</span></div>
             <div class="pp-step" id="pp3"><div class="pp-dot"></div><span class="pp-label">Stage 3 — Concentrations</span><span class="pp-val">18 models</span></div>
             <div class="pp-step" id="pp4"><div class="pp-dot"></div><span class="pp-label">Output: Cement Recipe</span><span class="pp-val">ready</span></div>
@@ -110,6 +111,7 @@
               <div class="pp-acc-val" id="ppAccVal">—</div>
             </div>
           </div>
+          
         </div>
       </div>
     </div>
