@@ -65,6 +65,35 @@
     transition: all 0.2s; white-space: nowrap;
   }
   .nav-cv-btn:hover { background: var(--accent); color: var(--bg); }
+
+  /* ── NAV TOGGLE (hamburger) ── */
+  .nav-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    width: 40px; height: 40px; background: transparent; border: 1px solid var(--border);
+    cursor: pointer; z-index: 101; padding: 0;
+  }
+  .nav-toggle span {
+    display: block; width: 20px; height: 2px; margin: 0 auto;
+    background: var(--ink); transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.active span:nth-child(2) { opacity: 0; }
+  .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  @media (max-width: 800px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      position: fixed; top: 0; right: 0; height: 100vh; width: min(78vw, 320px);
+      background: #060913; border-left: 1px solid var(--border);
+      flex-direction: column; align-items: flex-start; justify-content: center;
+      gap: 2rem; padding: 2rem; transform: translateX(100%);
+      transition: transform 0.3s ease; z-index: 100;
+    }
+    .nav-links.active { transform: translateX(0); }
+    .nav-links a { font-size: 0.95rem; }
+    .nav-cv-btn { display: inline-block; }
+  }
+
   .typewrite > .wrap {border-right: 0.08em solid var(--accent);animation: blinkCursor 0.8s infinite; }
 
   @keyframes blinkCursor {50% {border-color: transparent;}}
@@ -518,6 +547,53 @@
   .cyber-input { background:#0a1124; border:1px solid var(--border); padding:0.8rem 1rem; color:var(--ink); font-family:var(--sans); font-size:0.95rem; transition:all 0.3s; border-radius:2px; }
   .cyber-input:focus { outline:none; border-color:var(--accent); box-shadow:0 0 10px rgba(56,189,248,0.15); background:#0c1530; }
   textarea.cyber-input { min-height:120px; resize:vertical; }
+
+  /* ── MOBILE REFINEMENTS ── */
+  @media (max-width: 800px) {
+    .nav-container { padding: 1rem 1.25rem; }
+
+    header { padding-top: 7rem; padding-bottom: 3rem; }
+    header h1 { font-size: clamp(2.1rem, 9vw, 3rem); }
+    .hero-title { font-size: clamp(0.85rem, 3.2vw, 1.05rem); letter-spacing: 0.14em; }
+    .hero-summary { font-size: 0.95rem; }
+    .hero-cta { flex-direction: column; }
+    .hero-cta .btn { width: 100%; }
+    .hero-image-box { min-height: 260px; max-width: 280px; }
+
+    section { padding: 4.5rem 1.25rem; }
+    .section-label { font-size: 0.78rem; margin-bottom: 2rem; }
+
+    .metrics-section { padding: 2.5rem 1.25rem; }
+    .metric-card h2 { font-size: 2.1rem; }
+
+    .pc-content { padding: 1.5rem; }
+    .pc-content h3 { font-size: 1.15rem; }
+    .card-desc { font-size: 0.88rem; }
+    .card-footer { align-items: stretch; }
+
+    .cv-download-section { padding: 2rem 1.5rem; text-align: center; justify-content: center; }
+    .cv-dl-btns { width: 100%; justify-content: center; }
+
+    .connect-info h3 { font-size: 1.6rem; }
+  }
+
+  @media (max-width: 480px) {
+    .cert-summary-bar { flex-wrap: wrap; }
+    .cert-summary-cell { flex: 1 1 50%; border-bottom: 1px solid var(--border); }
+    .cert-summary-cell:nth-child(2) { border-right: none; }
+
+    .cert-tabs { gap: 0.4rem; }
+    .cert-tab { padding: 0.45rem 0.85rem; font-size: 0.66rem; }
+
+    .footer-text, .footer-socials { text-align: center; width: 100%; justify-content: center; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  /* Larger tap targets on touch devices */
+  @media (hover: none) {
+    .nav-links a, .card-link, .pub-link { padding: 0.25rem 0; }
+    .btn, .cv-dl-btn, .nav-cv-btn { padding-top: 0.9rem; padding-bottom: 0.9rem; }
+  }
 
   /* ── FOOTER ── */
   footer {
