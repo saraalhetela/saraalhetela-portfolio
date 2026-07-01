@@ -123,8 +123,7 @@
   .btn-secondary { background: transparent; border: 1px solid var(--border); color: var(--ink-mid); }
   .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
   .btn-cv {
-    background: transparent; border: 1px solid rgba(56,189,248,0.5); color: var(--accent);
-    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent; border: 1px solid rgba(56,189,248,0.5); color: var(--accent);align-items: center; gap: 0.5rem;
   }
   .btn-cv:hover { background: var(--accent); color: var(--bg); transform: translateY(-2px); }
 
