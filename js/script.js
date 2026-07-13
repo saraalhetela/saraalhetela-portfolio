@@ -56,6 +56,20 @@ const obs = new IntersectionObserver((entries) => {
 }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
 document.querySelectorAll('section').forEach(s => obs.observe(s));
 
+// ── METRICS COUNTER OBSERVER──────────
+const metricsSection = document.querySelector('.metrics-section');
+if (metricsSection) {
+  const metricsObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCounters();
+        metricsObs.disconnect(); // only needs to fire once
+      }
+    });
+  }, { threshold: 0.2 });
+  metricsObs.observe(metricsSection);
+}
+
 // ── COUNTERS ─────────────────────────────────────────────────────────────
 let countersFired = false;
 function animateCounters() {
