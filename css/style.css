@@ -58,10 +58,8 @@ nav {
 nav.scrolled { box-shadow: 0 8px 24px rgba(12,13,11,0.18); }
 .nav-container {
   max-width: 1200px; margin: 0 auto; padding: 1.15rem 2rem;
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; justify-content: flex-end; align-items: center;
 }
-.logo { font-family: var(--mono); font-size: 0.9rem; font-weight: 500; color: var(--cream); letter-spacing: 0.04em; }
-.logo span { color: var(--accent-light); }
 .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
 .nav-links a {
   font-size: 0.72rem; color: rgba(251,250,245,0.68);
@@ -431,6 +429,11 @@ section, footer {
 /* the 3 featured certs render larger, in accent-light */
 .cert-card-new.cert-big { grid-column: span 2; min-height: 290px; background: var(--accent-light); }
 @media (max-width: 560px) { .cert-card-new.cert-big { grid-column: span 1; } }
+
+/* when the cert count doesn't divide evenly, center the trailing lone card */
+.cert-grid-cards > .cert-card-new:last-child:not(.cert-big) { grid-column: 1 / -1; width: 25%; margin: 0 auto; }
+@media (max-width: 900px) { .cert-grid-cards > .cert-card-new:last-child:not(.cert-big) { width: 50%; } }
+@media (max-width: 560px) { .cert-grid-cards > .cert-card-new:last-child:not(.cert-big) { width: 100%; } }
 .cert-big .cert-card-body { padding: 1.4rem 1.6rem 1.7rem; }
 .cert-big .cert-card-name { font-size: 1.2rem; font-weight: 600; line-height: 1.32; margin-bottom: 1rem; }
 
