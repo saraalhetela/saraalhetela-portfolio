@@ -31,8 +31,6 @@ portfolio/
 │   └── style.css       # Custom stylesheets
 ├── js/
 │   └── script.js        # Interactive scripts
-├── images/
-│   └── pixel-me.png    # Profile avatar
 ├── files/
 │   └── Sara Alhetela — CV.pdf  # Professional resume
 └── favicon_ico/
