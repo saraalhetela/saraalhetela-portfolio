@@ -3,25 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Sara Alhetela</title>
-
-  <link rel="icon" type="image/x-icon" href="favicon_io\favicon.ico">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico">
   <link rel="stylesheet" href="css/style.css">
 </head>
-
-  <body>
-<canvas id="matrixCanvas"></canvas>
+<body>
 
 <!-- NAV -->
 <nav>
   <div class="nav-container">
-    <div class="logo">SARA<span>.Portfolio</span></div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
+    <div class="logo">SARA<span>.AI</span></div>
+    <ul class="nav-links">
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#certificates">Certifications</a></li>
@@ -34,44 +29,46 @@
 </nav>
 
 <!-- HERO -->
-<header>
-  <div class="radial-glow"></div>
+<header class="theme-dark">
+  <canvas id="heroCanvas"></canvas>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+  <div class="hero-scanline"></div>
+
   <div class="hero-content">
-    <h1 data-value="Sara Alhetela">Sara Alhetela</h1>
-    <div class="hero-title">
+    <p class="hero-eyebrow reveal-up" style="--d:0s">Hello, I'm</p>
+    <h1 class="reveal-up" style="--d:0.08s">Sara Alhetela</h1>
+    <div class="hero-title reveal-up" style="--d:0.16s">
       <span class="typewrite"
             data-period="2000"
-            data-type='["AI Developer","Data Scientist","ML Engineer"]'>
+            data-type='["ML Engineer","AI Developer","Data Scientist"]'>
         <span class="wrap"></span>
       </span>
     </div>
-    <p class="hero-summary">AI engineer and data scientist building and deploying end-to-end ML systems. A 17-classifier pipeline in production at an energy company. A deep RL trading agent trained on 150k steps of market data. Published research in computer vision. Based in Saudi Arabia, open to roles globally.</p>
-    <div class="hero-cta">
-      <a href="#connect" class="btn btn-primary">Get in Touch</a>
-      <a href="files/Sara_Alhetela_CV.pdf" target="_blank" rel="noopener" class="btn btn-cv">↓ Download CV</a>
+    <p class="hero-summary reveal-up" style="--d:0.24s">AI engineer and data scientist building and deploying end-to-end ML systems. A 17-classifier pipeline in production at an energy company. A deep RL trading agent trained on 150k steps of market data. Published research in computer vision. Based in Saudi Arabia, open to roles globally.</p>
+    <div class="hero-cta reveal-up" style="--d:0.32s">
+      <a href="#connect" class="btn btn-primary magnetic">Get in Touch</a>
+      <a href="files/Sara_Alhetela_CV.pdf" target="_blank" rel="noopener" class="btn btn-cv magnetic">↓ Download CV</a>
     </div>
   </div>
-
-  <!-- TERMINAL — type commands or click chips -->
-<div class="hero-image-box">
-  <img src="images/pixel-me.png" alt="Sara Alhetela" class="hero-image">
-</div>
+  <div class="hero-scroll-cue"><span></span></div>
 </header>
 
 <!-- METRICS -->
-<div class="metrics-section">
+<div class="metrics-section theme-sage">
   <div class="metrics-grid">
-    <div class="metric-card">
+    <div class="metric-card" data-reveal="blur" data-delay="0">
       <h2><span class="counter-val" data-target="99" data-suffix=".4%">0</span></h2>
       <p>ML Model Accuracy</p>
       <div class="metric-sub">TAQA production pipeline · Stage 1</div>
     </div>
-    <div class="metric-card">
+    <div class="metric-card" data-reveal="blur" data-delay="2">
       <h2><span class="counter-val" data-target="11" data-suffix="">0</span></h2>
       <p>Certifications Earned</p>
       <div class="metric-sub">Google Cloud · Udemy · Kaggle</div>
     </div>
-    <div class="metric-card">
+    <div class="metric-card" data-reveal="blur" data-delay="4">
       <h2><span class="counter-val" data-target="3" data-suffix="">0</span></h2>
       <p>Projects made</p>
       <div class="metric-sub">And more on the way</div>
@@ -80,194 +77,197 @@
 </div>
 
 <!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label">Projects</div>
-  <div class="projects-list">
+<section id="projects" class="theme-cream">
+  <div class="section-inner">
+    <div class="section-label" data-reveal="left">Projects</div>
+    <div class="projects-list">
 
-    <!-- TAQA — has pipeline preview -->
-    <div class="project-card has-preview">
-      <div class="pc-content">
-        <div>
-          <div class="card-tags">
-            <span class="tag">scikit-learn</span><span class="tag">XGBoost</span>
-            <span class="tag">CatBoost</span><span class="tag">SMOTE</span>
+      <!-- Card 1 -->
+      <div class="project-card has-preview">
+        <div class="pc-content">
+          <div>
+            <div class="card-tags">
+              <span class="tag">scikit-learn</span><span class="tag">XGBoost</span>
+              <span class="tag">CatBoost</span><span class="tag">SMOTE</span>
+            </div>
+            <h3>Oil Well Cement Mix Predictor</h3>
+            <p class="card-desc">A 3-stage ML pipeline built and deployed at TAQA. Takes well engineering parameters as input and outputs cement additives, chemical variants, and concentration ranges. Replaced a manual expert review process that blocked every pre-construction drilling cycle. 18 ensemble classifiers with per-target hyperparameter tuning, SMOTE/ADASYN resampling, and a Flask web interface used directly by field engineers.</p>
           </div>
-          <h3>Oil Well Cement Mix Predictor</h3>
-          <p class="card-desc">A 3-stage ML pipeline built and deployed at TAQA. Takes well engineering parameters as input and outputs cement additives, chemical variants, and concentration ranges. Replaced a manual expert review process that blocked every pre-construction drilling cycle. 18 ensemble classifiers with per-target hyperparameter tuning, SMOTE/ADASYN resampling, and a Flask web interface used directly by field engineers.</p>
+          <div class="card-footer">
+            <div class="card-stat">Top accuracy: <span>99.5%</span> &nbsp;·&nbsp; Deployed at <span>TAQA</span></div>
+            <a href="https://github.com/saraalhetela/Oil-Well-Cement-Mix-Predictor" target="_blank" class="card-link">View on GitHub ↗</a>
+          </div>
         </div>
-        <div class="card-footer">
-          <div class="card-stat">Top accuracy: <span>99.5%</span> &nbsp;·&nbsp; Deployed at <span>TAQA</span></div> 
-          <a href="https://github.com/saraalhetela/Oil-Well-Cement-Mix-Predictor" target="_blank" class="card-link">View on GitHub ↗</a>
-        </div>
-      </div>
-      <div class="pc-preview">
-        <div class="pc-preview-inner">
-          <div class="pipeline-preview" id="pipelinePreview">
-            <div class="pp-title">Live Pipeline Simulation</div>
-            <div class="pp-step" id="pp0"><div class="pp-dot"></div><span class="pp-label">Input: Well Parameters</span><span class="pp-val">10 features</span></div>
-            <div class="pp-step" id="pp1"><div class="pp-dot"></div><span class="pp-label">Stage 1 — Additive Categories</span><span class="pp-val">18 classifiers</span></div>
-            <div class="pp-step" id="pp2"><div class="pp-dot"></div><span class="pp-label">Stage 2 — Product Variants</span><span class="pp-val">5 models</span></div>
-            <div class="pp-step" id="pp3"><div class="pp-dot"></div><span class="pp-label">Stage 3 — Concentrations</span><span class="pp-val">18 models</span></div>
-            <div class="pp-step" id="pp4"><div class="pp-dot"></div><span class="pp-label">Output: Cement Recipe</span><span class="pp-val">ready</span></div>
-            <div class="pp-accuracy">
-              <div class="pp-acc-label">Best Stage 1 Accuracy</div>
-              <div class="pp-acc-val" id="ppAccVal">—</div>
+        <div class="pc-preview">
+          <div class="pc-preview-inner">
+            <div class="pipeline-preview" id="pipelinePreview">
+              <div class="pp-title">Live Pipeline Simulation</div>
+              <div class="pp-step" id="pp0"><div class="pp-dot"></div><span class="pp-label">Input: Well Parameters</span><span class="pp-val">10 features</span></div>
+              <div class="pp-step" id="pp1"><div class="pp-dot"></div><span class="pp-label">Stage 1 — Additive Categories</span><span class="pp-val">18 classifiers</span></div>
+              <div class="pp-step" id="pp2"><div class="pp-dot"></div><span class="pp-label">Stage 2 — Product Variants</span><span class="pp-val">5 models</span></div>
+              <div class="pp-step" id="pp3"><div class="pp-dot"></div><span class="pp-label">Stage 3 — Concentrations</span><span class="pp-val">18 models</span></div>
+              <div class="pp-step" id="pp4"><div class="pp-dot"></div><span class="pp-label">Output: Cement Recipe</span><span class="pp-val">ready</span></div>
+              <div class="pp-accuracy">
+                <div class="pp-acc-label">Best Stage 1 Accuracy</div>
+                <div class="pp-acc-val" id="ppAccVal">—</div>
+              </div>
             </div>
           </div>
-          
         </div>
       </div>
-    </div>
 
-    <!-- DQN — has canvas chart preview -->
-    <div class="project-card has-preview flip">
-      <div class="pc-content">
-        <div>
-          <div class="card-tags">
-            <span class="tag">PyTorch</span><span class="tag">Deep RL</span>
-            <span class="tag">DQN</span><span class="tag">CUDA</span>
+      <!-- Card 2 -->
+      <div class="project-card has-preview flip">
+        <div class="pc-content">
+          <div>
+            <div class="card-tags">
+              <span class="tag">PyTorch</span><span class="tag">Deep RL</span>
+              <span class="tag">DQN</span><span class="tag">CUDA</span>
+            </div>
+            <h3>Dueling Conv1D DQN Trading Agent</h3>
+            <p class="card-desc">A deep reinforcement learning agent for algorithmic trading built in PyTorch. Uses a Dueling Conv1D Q-Network with Double DQN, N-step returns, and symmetric reward shaping to learn long-only trade entries and exits directly from OHLC price data. Trained for 150,000 steps on AAPL with CUDA GPU acceleration. Outperformed buy-and-hold by +14.30% on a held-out test set (18.15% vs 3.85%), with a 70% win rate across 20 trades.</p>
           </div>
-          <h3>Dueling Conv1D DQN Trading Agent</h3>
-          <p class="card-desc">A deep reinforcement learning agent for algorithmic trading built in PyTorch. Uses a Dueling Conv1D Q-Network with Double DQN, N-step returns, and symmetric reward shaping to learn long-only trade entries and exits directly from OHLC price data. Trained for 150,000 steps on AAPL with CUDA GPU acceleration. Outperformed buy-and-hold by +14.30% on a held-out test set (18.15% vs 3.85%), with a 70% win rate across 20 trades. Evaluated on data the agent never saw during training.</p>
+          <div class="card-footer">
+            <div class="card-stat">
+              Training: <span>150k steps</span> &nbsp;·&nbsp;
+              Asset: <span>AAPL</span> &nbsp;·&nbsp;
+              Alpha vs B&H: <span>+14.30%</span>
+            </div>
+            <a href="https://github.com/saraalhetela/dueling-dqn-stock-trader" target="_blank" class="card-link">View on GitHub ↗</a>
+          </div>
         </div>
-        <div class="card-footer">
-          <div class="card-stat">
-            Training: <span>150k steps</span> &nbsp;·&nbsp;
-            Asset: <span>AAPL</span> &nbsp;·&nbsp;
-            Alpha vs B&H: <span>+14.30%</span>
+        <div class="pc-preview">
+          <div class="pc-preview-inner">
+            <canvas id="tradingCanvas"></canvas>
           </div>
-          <a href="https://github.com/saraalhetela/dueling-dqn-stock-trader" target="_blank" class="card-link">View on GitHub ↗</a>
         </div>
       </div>
-      <div class="pc-preview">
-        <div class="pc-preview-inner">
-          <canvas id="tradingCanvas"></canvas>
-        </div>
-      </div>
-    </div>
 
-    <!-- Energy — in development, no preview -->
-    <div class="project-card no-preview">
-      <div class="pc-content">
-        <div>
-          <div class="card-tags">
-            <span class="tag">Time Series</span><span class="tag">Forecasting</span><span class="tag">Vision 2030</span>
-          </div>
-          <h3>Energy Consumption Forecasting</h3>
-          <p class="card-desc">A time-series ML project predicting energy consumption patterns to support smarter energy planning — relevant to Saudi Arabia's Vision 2030 energy transition.</p>
-        </div>
-        <div class="pc-wip" style="padding:0.75rem 1.5rem; margin:0.5rem 1.5rem; gap:0.5rem;">
-          <div class="pc-wip-bar"><div class="pc-wip-fill"></div></div>
-          <div class="pc-wip-text">In development — Feature engineering · Baseline models · Forecasting pipeline</div>
-        </div>
-        <div class="card-footer">
-          <div class="card-stat">Status: <span>Active development</span></div>
-        </div>
-      </div>
     </div>
-
   </div>
 </section>
 
 <!-- SKILLS -->
-<section id="skills">
-    <div class="section-label">Skills & Technical Stack</div>
-
+<section id="skills" class="theme-sage">
+  <div class="section-inner">
+    <div class="section-label" data-reveal="left">Skills &amp; Technical Stack</div>
     <div class="skills-matrix">
 
-        <div class="skill-group">
-            <div class="skill-header">ML / Deep Learning</div>
-            <div class="skill-meta">Feature Engineering • Model Evaluation • Hyperparameter Tuning • Distributed Training • Inference Optimization</div>
-            <div class="pill-container">
-                <span class="pill">PyTorch</span>
-                <span class="pill">TensorFlow</span>
-                <span class="pill">Keras</span>
-                <span class="pill">scikit-learn</span>
-                <span class="pill">XGBoost</span>
-                <span class="pill">CatBoost</span>
-            </div>
+      <div class="skill-group" data-reveal="left" data-delay="1">
+        <div class="skill-index">01</div>
+        <div class="skill-main">
+          <div class="skill-header">ML / Deep Learning</div>
+        <div class="skill-meta">Feature Engineering • Model Evaluation • Hyperparameter Tuning • Distributed Training • Inference Optimization</div>
         </div>
+        <div class="pill-container">
+          <span class="pill" data-reveal="up" data-delay="2">PyTorch</span>
+          <span class="pill" data-reveal="up" data-delay="3">TensorFlow</span>
+          <span class="pill" data-reveal="up" data-delay="4">Keras</span>
+          <span class="pill" data-reveal="up" data-delay="5">scikit-learn</span>
+          <span class="pill" data-reveal="up" data-delay="6">XGBoost</span>
+          <span class="pill" data-reveal="up" data-delay="7">CatBoost</span>
+        </div>
+      </div>
 
-        <div class="skill-group">
-            <div class="skill-header">LLMs & NLP</div>
-            <div class="skill-meta">Embeddings • Retrieval Pipelines • Vector Search • Context Optimization • Agentic Workflows • LLM Evaluation</div>
-            <div class="pill-container">
-                <span class="pill">Hugging Face Transformers</span>
-                <span class="pill">LangChain</span>
-                <span class="pill">RAG</span>
-                <span class="pill">Prompt Engineering</span>
-                <span class="pill">Fine-tuning</span>
-                <span class="pill">NLP</span>
-            </div>
+      <div class="skill-group" data-reveal="left" data-delay="2">
+        <div class="skill-index">02</div>
+        <div class="skill-main">
+          <div class="skill-header">LLMs &amp; NLP</div>
+        <div class="skill-meta">Embeddings • Retrieval Pipelines • Vector Search • Context Optimization • Agentic Workflows • LLM Evaluation</div>
         </div>
+        <div class="pill-container">
+          <span class="pill" data-reveal="up" data-delay="3">Hugging Face Transformers</span>
+          <span class="pill" data-reveal="up" data-delay="4">LangChain</span>
+          <span class="pill" data-reveal="up" data-delay="5">RAG</span>
+          <span class="pill" data-reveal="up" data-delay="6">Prompt Engineering</span>
+          <span class="pill" data-reveal="up" data-delay="7">Fine-tuning</span>
+          <span class="pill" data-reveal="up" data-delay="8">NLP</span>
+        </div>
+      </div>
 
-        <div class="skill-group">
-            <div class="skill-header">MLOps & Deployment</div>
-            <div class="skill-meta">Model Registry • CI/CD • Monitoring • Drift Detection • Scalable Inference • Containerized Systems</div>
-            <div class="pill-container">
-                <span class="pill">MLflow</span>
-                <span class="pill">Docker</span>
-                <span class="pill">Kubernetes</span>
-                <span class="pill">CI/CD</span>
-                <span class="pill">Flask</span>
-                <span class="pill">Model Deployment</span>
-            </div>
+      <div class="skill-group" data-reveal="left" data-delay="3">
+        <div class="skill-index">03</div>
+        <div class="skill-main">
+          <div class="skill-header">MLOps &amp; Deployment</div>
+        <div class="skill-meta">Model Registry • CI/CD • Monitoring • Drift Detection • Scalable Inference • Containerized Systems</div>
         </div>
+        <div class="pill-container">
+          <span class="pill" data-reveal="up" data-delay="4">MLflow</span>
+          <span class="pill" data-reveal="up" data-delay="5">Docker</span>
+          <span class="pill" data-reveal="up" data-delay="6">Kubernetes</span>
+          <span class="pill" data-reveal="up" data-delay="7">CI/CD</span>
+          <span class="pill" data-reveal="up" data-delay="8">Flask</span>
+          <span class="pill" data-reveal="up" data-delay="9">Model Deployment</span>
+        </div>
+      </div>
 
-        <div class="skill-group">
-            <div class="skill-header">Reinforcement Learning</div>
-            <div class="skill-meta">Policy Optimization • Exploration Strategies • Reward Engineering • Deep RL Systems</div>
-            <div class="pill-container">
-                <span class="pill">Deep RL</span>
-                <span class="pill">DQN</span>
-                <span class="pill">Reward Shaping</span>
-            </div>
+      <div class="skill-group" data-reveal="left" data-delay="4">
+        <div class="skill-index">04</div>
+        <div class="skill-main">
+          <div class="skill-header">Reinforcement Learning</div>
+        <div class="skill-meta">Policy Optimization • Exploration Strategies • Reward Engineering • Deep RL Systems</div>
         </div>
+        <div class="pill-container">
+          <span class="pill" data-reveal="up" data-delay="5">Deep RL</span>
+          <span class="pill" data-reveal="up" data-delay="6">DQN</span>
+          <span class="pill" data-reveal="up" data-delay="7">Reward Shaping</span>
+        </div>
+      </div>
 
-        <div class="skill-group">
-            <div class="skill-header">Computer Vision</div>
-            <div class="skill-meta">Feature Extraction • CNN Architectures • Image Classification Pipelines</div>
-            <div class="pill-container">
-                <span class="pill">CNNs</span>
-                <span class="pill">Image Classification</span>
-            </div>
+      <div class="skill-group" data-reveal="left" data-delay="5">
+        <div class="skill-index">05</div>
+        <div class="skill-main">
+          <div class="skill-header">Computer Vision</div>
+        <div class="skill-meta">Feature Extraction • CNN Architectures • Image Classification Pipelines</div>
         </div>
+        <div class="pill-container">
+          <span class="pill" data-reveal="up" data-delay="6">CNNs</span>
+          <span class="pill" data-reveal="up" data-delay="7">Image Classification</span>
+        </div>
+      </div>
 
-        <div class="skill-group">
-            <div class="skill-header">Data & Cloud</div>
-            <div class="skill-meta">ETL Pipelines • Data Cleaning • Warehousing • Batch Processing • Real-time Systems</div>
-            <div class="pill-container">
-                <span class="pill">Python</span>
-                <span class="pill">SQL</span>
-                <span class="pill">NumPy</span>
-                <span class="pill">Pandas</span>
-                <span class="pill">BigQuery ML</span>
-                <span class="pill">GCP</span>
-                <span class="pill">CUDA</span>
-            </div>
+      <div class="skill-group" data-reveal="left" data-delay="6">
+        <div class="skill-index">06</div>
+        <div class="skill-main">
+          <div class="skill-header">Data &amp; Cloud</div>
+        <div class="skill-meta">ETL Pipelines • Data Cleaning • Warehousing • Batch Processing • Real-time Systems</div>
         </div>
+        <div class="pill-container">
+          <span class="pill" data-reveal="up" data-delay="7">Python</span>
+          <span class="pill" data-reveal="up" data-delay="8">SQL</span>
+          <span class="pill" data-reveal="up" data-delay="9">NumPy</span>
+          <span class="pill" data-reveal="up" data-delay="10">Pandas</span>
+          <span class="pill" data-reveal="up" data-delay="11">BigQuery ML</span>
+          <span class="pill" data-reveal="up" data-delay="12">GCP</span>
+          <span class="pill" data-reveal="up" data-delay="13">CUDA</span>
+        </div>
+      </div>
 
     </div>
+  </div>
 </section>
 
-<!-- CERTIFICATIONS -->
-<section id="certificates">
-  <div class="section-label">Certifications</div>
- 
-  <!-- ALL -->
-  <div class="cert-panel active" id="cert-all">
-    <div class="cert-grid-cards">
+<!-- CERTIFICATIONS — Card Grid Layout -->
+<section id="certificates" class="theme-cream">
+  <div class="section-inner">
+    <div class="section-label" data-reveal="left">Certifications</div>
 
-           <a class="cert-card-new" href="https://www.udemy.com/certificate/UC-cda24473-05c9-4789-9d70-5c63ce164e27/" target="_blank" rel="noopener">
+    <div class="cert-header-row" data-reveal="up" data-delay="1">
+      <div class="cert-count-badge" id="certCount">14 certificates</div>
+    </div>
+
+    <div class="cert-grid-cards" id="certList">
+
+      <a class="cert-card-new cert-big cert-big-0" data-issuer="udemy" data-reveal="scale" data-delay="0" href="https://www.udemy.com/certificate/UC-cda24473-05c9-4789-9d70-5c63ce164e27/" target="_blank" rel="noopener">
         <div class="cert-card-band"></div>
-          <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Udemy<div class="cert-hint">View certificate ↗</div></div>
+        <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Udemy<div class="cert-hint">View certificate ↗</div></div>
         <div class="cert-card-body">
           <div class="cert-card-name">Deep Reinforcement Learning using Python</div>
           <div class="cert-card-meta"><span class="cert-card-issuer">Udemy</span><span class="cert-card-year">2025</span></div>
         </div>
-       </a>
- 
-      <a class="cert-card-new" href="https://www.kaggle.com/learn/certification/saraalhetela/feature-engineering" target="_blank" rel="noopener">
+      </a>
+
+      <a class="cert-card-new" data-issuer="kaggle" data-reveal="scale" data-delay="1" href="https://www.kaggle.com/learn/certification/saraalhetela/feature-engineering" target="_blank" rel="noopener">
         <div class="cert-card-band"></div>
         <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Kaggle<div class="cert-hint">View certificate ↗</div></div>
         <div class="cert-card-body">
@@ -276,7 +276,7 @@
         </div>
       </a>
 
-      <a class="cert-card-new" href="https://www.kaggle.com/learn/certification/saraalhetela/intro-to-machine-learning" target="_blank" rel="noopener">
+      <a class="cert-card-new" data-issuer="kaggle" data-reveal="scale" data-delay="2" href="https://www.kaggle.com/learn/certification/saraalhetela/intro-to-machine-learning" target="_blank" rel="noopener">
         <div class="cert-card-band"></div>
         <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Kaggle<div class="cert-hint">View certificate ↗</div></div>
         <div class="cert-card-body">
@@ -285,7 +285,7 @@
         </div>
       </a>
 
-      <a class="cert-card-new" href="https://www.kaggle.com/learn/certification/saraalhetela/pandas" target="_blank" rel="noopener">
+      <a class="cert-card-new" data-issuer="kaggle" data-reveal="scale" data-delay="3" href="https://www.kaggle.com/learn/certification/saraalhetela/pandas" target="_blank" rel="noopener">
         <div class="cert-card-band"></div>
         <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Kaggle<div class="cert-hint">View certificate ↗</div></div>
         <div class="cert-card-body">
@@ -293,8 +293,17 @@
           <div class="cert-card-meta"><span class="cert-card-issuer">Kaggle</span><span class="cert-card-year">2023</span></div>
         </div>
       </a>
- 
-      <a class="cert-card-new" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1170504" target="_blank" rel="noopener">
+
+      <a class="cert-card-new" data-issuer="kaggle" data-reveal="scale" data-delay="4" href="https://www.kaggle.com/learn/certification/saraalhetela/intermediate-machine-learning" target="_blank" rel="noopener">
+        <div class="cert-card-band"></div>
+        <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Kaggle<div class="cert-hint">View certificate ↗</div></div>
+        <div class="cert-card-body">
+          <div class="cert-card-name">Intermediate Machine Learning</div>
+          <div class="cert-card-meta"><span class="cert-card-issuer">Kaggle</span><span class="cert-card-year">2023</span></div>
+        </div>
+      </a>
+
+      <a class="cert-card-new cert-big cert-big-3" data-issuer="google" data-reveal="scale" data-delay="5" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1170504" target="_blank" rel="noopener">
         <div class="cert-card-band"></div>
         <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Google Cloud<div class="cert-hint">View certificate ↗</div></div>
         <div class="cert-card-body">
@@ -302,8 +311,8 @@
           <div class="cert-card-meta"><span class="cert-card-issuer">Google Cloud Skills Boost</span><span class="cert-card-year">2021</span></div>
         </div>
       </a>
- 
-      <a class="cert-card-new" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1173568" target="_blank" rel="noopener">
+
+      <a class="cert-card-new" data-issuer="google" data-reveal="scale" data-delay="6" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1173568" target="_blank" rel="noopener">
         <div class="cert-card-band"></div>
         <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Google Cloud<div class="cert-hint">View certificate ↗</div></div>
         <div class="cert-card-body">
@@ -311,8 +320,8 @@
           <div class="cert-card-meta"><span class="cert-card-issuer">Google Cloud Skills Boost</span><span class="cert-card-year">2021</span></div>
         </div>
       </a>
- 
-      <a class="cert-card-new" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1173846" target="_blank" rel="noopener">
+
+      <a class="cert-card-new" data-issuer="google" data-reveal="scale" data-delay="7" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1173846" target="_blank" rel="noopener">
         <div class="cert-card-band"></div>
         <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Google Cloud<div class="cert-hint">View certificate ↗</div></div>
         <div class="cert-card-body">
@@ -320,17 +329,17 @@
           <div class="cert-card-meta"><span class="cert-card-issuer">Google Cloud Skills Boost</span><span class="cert-card-year">2021</span></div>
         </div>
       </a>
- 
-      <a class="cert-card-new" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1177393" target="_blank" rel="noopener">
+
+      <a class="cert-card-new" data-issuer="google" data-reveal="scale" data-delay="8" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1177393" target="_blank" rel="noopener">
         <div class="cert-card-band"></div>
-        <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot google"></div>Google Cloud<div class="cert-hint">View certificate ↗</div></div>
+        <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Google Cloud<div class="cert-hint">View certificate ↗</div></div>
         <div class="cert-card-body">
           <div class="cert-card-name">Intermediate ML: TensorFlow on GCP</div>
           <div class="cert-card-meta"><span class="cert-card-issuer">Google Cloud Skills Boost</span><span class="cert-card-year">2021</span></div>
         </div>
       </a>
- 
-      <a class="cert-card-new" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1254479" target="_blank" rel="noopener">
+
+      <a class="cert-card-new cert-big cert-big-4" data-issuer="google" data-reveal="scale" data-delay="9" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1254479" target="_blank" rel="noopener">
         <div class="cert-card-band"></div>
         <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Google Cloud<div class="cert-hint">View certificate ↗</div></div>
         <div class="cert-card-body">
@@ -338,8 +347,8 @@
           <div class="cert-card-meta"><span class="cert-card-issuer">Google Cloud Skills Boost</span><span class="cert-card-year">2021</span></div>
         </div>
       </a>
- 
-      <a class="cert-card-new" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1262962" target="_blank" rel="noopener">
+
+      <a class="cert-card-new" data-issuer="google" data-reveal="scale" data-delay="10" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1262962" target="_blank" rel="noopener">
         <div class="cert-card-band"></div>
         <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Google Cloud<div class="cert-hint">View certificate ↗</div></div>
         <div class="cert-card-body">
@@ -347,8 +356,8 @@
           <div class="cert-card-meta"><span class="cert-card-issuer">Google Cloud Skills Boost</span><span class="cert-card-year">2021</span></div>
         </div>
       </a>
- 
-      <a class="cert-card-new" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1263159" target="_blank" rel="noopener">
+
+      <a class="cert-card-new" data-issuer="google" data-reveal="scale" data-delay="11" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1263159" target="_blank" rel="noopener">
         <div class="cert-card-band"></div>
         <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Google Cloud<div class="cert-hint">View certificate ↗</div></div>
         <div class="cert-card-body">
@@ -356,17 +365,8 @@
           <div class="cert-card-meta"><span class="cert-card-issuer">Google Cloud Skills Boost</span><span class="cert-card-year">2021</span></div>
         </div>
       </a>
- 
-      <a class="cert-card-new" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1270698" target="_blank" rel="noopener">
-        <div class="cert-card-band"></div>
-        <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Google Cloud<div class="cert-hint">View certificate ↗</div></div>
-        <div class="cert-card-body">
-          <div class="cert-card-name">Scientific Data Processing</div>
-          <div class="cert-card-meta"><span class="cert-card-issuer">Google Cloud Skills Boost</span><span class="cert-card-year">2021</span></div>
-        </div>
-      </a>
- 
-      <a class="cert-card-new" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1247461" target="_blank" rel="noopener">
+
+      <a class="cert-card-new" data-issuer="google" data-reveal="scale" data-delay="12" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1247461" target="_blank" rel="noopener">
         <div class="cert-card-band"></div>
         <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Google Cloud<div class="cert-hint">View certificate ↗</div></div>
         <div class="cert-card-body">
@@ -374,173 +374,139 @@
           <div class="cert-card-meta"><span class="cert-card-issuer">Google Cloud Skills Boost</span><span class="cert-card-year">2021</span></div>
         </div>
       </a>
-      
+
+      <a class="cert-card-new" data-issuer="google" data-reveal="scale" data-delay="13" href="https://www.skills.google/public_profiles/3ec0e5c4-53af-4f8d-860e-628f6410102f/badges/1270698" target="_blank" rel="noopener">
+        <div class="cert-card-band"></div>
+        <div class="cert-issuer-badge-icon"><div class="cert-issuer-dot"></div>Google Cloud<div class="cert-hint">View certificate ↗</div></div>
+        <div class="cert-card-body">
+          <div class="cert-card-name">Scientific Data Processing</div>
+          <div class="cert-card-meta"><span class="cert-card-issuer">Google Cloud Skills Boost</span><span class="cert-card-year">2021</span></div>
+        </div>
+      </a>
+
     </div>
   </div>
- 
- 
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label">Work Experience</div>
-  <div class="timeline">
-    <div class="time-item">
-      <div class="time-meta">[ Feb 2024 — Jul 2024 ]</div>
-      <div class="time-content">
-        <h3>Data Scientist</h3>
-        <div class="time-company">Fathom.io</div>
-        <ul class="time-bullets">
-          <li>Fine-tuned a Hugging Face model for task-specific performance. Improved response accuracy through iterative prompt engineering and model evaluation.</li>
-          <li>Managed a private GPU cluster, reducing training time and improving infrastructure stability for the engineering team.</li>
-          <li>Resolved five critical platform bugs through root-cause analysis, contributing to a 15% uptime improvement over the final two months of the contract.</li>
-        </ul>
+<section id="experience" class="theme-sage">
+  <div class="section-inner">
+    <div class="section-label" data-reveal="left">Work Experience</div>
+    <div class="timeline">
+      <div class="time-item" data-reveal="left" data-delay="1">
+        <div class="time-meta">[ Feb 2024 — Jul 2024 ]</div>
+        <div class="time-content">
+          <h3>Data Scientist</h3>
+          <div class="time-company">Fathom.io</div>
+          <ul class="time-bullets">
+            <li>Fine-tuned a Hugging Face model for task-specific performance. Improved response accuracy through iterative prompt engineering and model evaluation.</li>
+            <li>Managed a private GPU cluster, reducing training time and improving infrastructure stability for the engineering team.</li>
+            <li>Resolved five critical platform bugs through root-cause analysis, contributing to a 15% uptime improvement over the final two months of the contract.</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div class="time-item">
-      <div class="time-meta">[ Jul 2023 — Sep 2023 ]</div>
-      <div class="time-content">
-        <h3>AI/ML Intern</h3>
-        <div class="time-company">TAQA – Industrialization &amp; Energy Services</div>
-        <ul class="time-bullets">
-          <li>Built a 3-stage ML pipeline to automate cement mix design — predicting required additives, product variants, and concentrations from well parameters, achieving up to 99.4% accuracy.</li>
-          <li>Handled extreme class imbalance across 17 targets using tailored resampling strategies (SMOTE, ADASYN, TomekLinks).</li>
-          <li>Shipped a web interface for field engineers that made the model's outputs accessible to non-technical users, replacing manual expert calculation entirely.</li>
-        </ul>
+      <div class="time-item" data-reveal="right" data-delay="2">
+        <div class="time-meta">[ Jul 2023 — Sep 2023 ]</div>
+        <div class="time-content">
+          <h3>AI/ML Intern</h3>
+          <div class="time-company">TAQA – Industrialization &amp; Energy Services</div>
+          <ul class="time-bullets">
+            <li>Built a 3-stage ML pipeline to automate cement mix design — predicting required additives, product variants, and concentrations from well parameters, achieving up to 99.4% accuracy.</li>
+            <li>Handled extreme class imbalance across 17 targets using tailored resampling strategies (SMOTE, ADASYN, TomekLinks).</li>
+            <li>Shipped a web interface for field engineers that made the model's outputs accessible to non-technical users, replacing manual expert calculation entirely.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- EDUCATION -->
-<section id="education">
-  <div class="section-label">Education</div>
-  <div class="edu-card" style="max-width:700px;">
-    <h4>B.Sc. Artificial Intelligence</h4>
-    <div class="edu-inst">Imam Abdulrahman Bin Faisal University</div>
-    <div class="edu-meta">Graduated August 2023 · Dammam, Saudi Arabia</div>
-    <div class="honours-badge">First-Class Honours</div>
+<section id="education" class="theme-dark">
+  <div class="section-inner">
+    <div class="section-label" data-reveal="left">Education</div>
+    <div class="edu-card" style="max-width:700px;" data-reveal="blur" data-delay="1">
+      <h4>B.Sc. Artificial Intelligence</h4>
+      <div class="edu-inst">Imam Abdulrahman Bin Faisal University</div>
+      <div class="edu-meta">Graduated August 2023 · Dammam, Saudi Arabia</div>
+      <div class="honours-badge">First-Class Honours</div>
+    </div>
   </div>
 </section>
 
 <!-- RESEARCH -->
-<section id="research">
-  <div class="section-label">Research &amp; Publications</div>
-  <div class="pub-box" style="max-width:800px;">
-    <div class="pub-title">“Deep Learning Approach to Recyclable Products Classification: Towards Sustainable Waste Management”</div>
-    <div class="pub-meta">Sustainability · Vol. 15, No. 14, 2023 · p. 11138 · Alhetela, Sara, et al.</div>
-    <a href="https://www.mdpi.com/2391996" target="_blank" class="pub-link">Read the Paper ↗</a>
+<section id="research" class="theme-cream">
+  <div class="section-inner">
+    <div class="section-label" data-reveal="left">Research &amp; Publications</div>
+    <div class="pub-box" style="max-width:800px;" data-reveal="blur" data-delay="1">
+      <div class="pub-title">"Deep Learning Approach to Recyclable Products Classification: Towards Sustainable Waste Management"</div>
+      <div class="pub-meta">Sustainability · Vol. 15, No. 14, 2023 · p. 11138 · Alhetela, Sara, et al.</div>
+      <a href="https://www.mdpi.com/2391996" target="_blank" class="pub-link">Read the Paper ↗</a>
+    </div>
   </div>
 </section>
 
 <!-- CV DOWNLOAD -->
-<section id="cv-download">
-  <div class="cv-download-section">
-    <div class="cv-dl-text">
-      <h3>Want my full CV?</h3>
-      <p>Download a PDF version with all experience, education, projects, and certifications.</p>
-    </div>
-    <div class="cv-dl-btns">
-      <a href="files/Sara_Alhetela_CV.pdf" target="_blank" rel="noopener" class="cv-dl-btn primary">↓ Download CV (PDF)</a>
-      <a href="https://linkedin.com/in/sara-a-262b55234" target="_blank" class="cv-dl-btn secondary">View LinkedIn ↗</a>
+<section id="cv-download" class="theme-sage">
+  <div class="section-inner">
+    <div class="cv-download-section" data-reveal="up" data-delay="1">
+      <div class="cv-dl-text">
+        <h3>Want my full CV?</h3>
+        <p>Download a PDF version with all experience, education, projects, and certifications.</p>
+      </div>
+      <div class="cv-dl-btns">
+        <a href="files/Sara_Alhetela_CV.pdf" target="_blank" rel="noopener" class="cv-dl-btn primary">↓ Download CV (PDF)</a>
+        <a href="https://linkedin.com/in/sara-a-262b55234" target="_blank" class="cv-dl-btn secondary">View LinkedIn ↗</a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="connect">
-  <div class="section-label">Get in Touch</div>
-
-  <div class="connect-container">
-
-    <div class="connect-info">
-      <h3>Let's Talk</h3>
-
-      <p>
-        Open to Data Scientist, ML Engineer, and AI Engineer roles,
-        remote or on-site. Feel free to reach out directly or use the
-        form.
-      </p>
-
-      <div class="contact-method">
-        <span>✉</span>
-        <a href="mailto:Alhetelasara@gmail.com">
-          Alhetelasara@gmail.com
-        </a>
+<section id="connect" class="theme-cream">
+  <div class="section-inner">
+    <div class="section-label" data-reveal="left">Get in Touch</div>
+    <div class="connect-container" data-reveal="up" data-delay="1">
+      <div class="connect-info">
+        <h3>Let's Talk</h3>
+        <p>Open to Data Scientist, ML Engineer, and AI Engineer roles, remote or on-site. Feel free to reach out directly or use the form.</p>
+        <div class="contact-method"><span>✉</span><a href="mailto:Alhetelasara@gmail.com">Alhetelasara@gmail.com</a></div>
+        <div class="contact-method"><span>💻</span><a href="https://github.com/saraalhetela" target="_blank">github.com/saraalhetela ↗</a></div>
+        <div class="contact-method"><span>🔗</span><a href="https://linkedin.com/in/sara-a-262b55234" target="_blank">linkedin.com/in/sara-a-262b55234 ↗</a></div>
       </div>
-
-      <div class="contact-method">
-        <span>💻</span>
-        <a href="https://github.com/saraalhetela" target="_blank">
-          github.com/saraalhetela ↗
-        </a>
-      </div>
-
-      <div class="contact-method">
-        <span>🔗</span>
-        <a href="https://linkedin.com/in/sara-a-262b55234" target="_blank">
-          linkedin.com/in/sara-a-262b55234 ↗
-        </a>
+      <div class="connect-form">
+        <form id="contactForm" class="cyber-form">
+          <div class="form-group">
+            <label for="senderName">Your Name</label>
+            <input type="text" id="senderName" class="cyber-input" required>
+          </div>
+          <div class="form-group">
+            <label for="senderEmail">Your Email</label>
+            <input type="email" id="senderEmail" class="cyber-input" required>
+          </div>
+          <div class="form-group">
+            <label for="senderMessage">Message</label>
+            <textarea id="senderMessage" class="cyber-input" rows="6" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
+        </form>
       </div>
     </div>
-
-    <div class="connect-form">
-
-      <form id="contactForm" class="cyber-form">
-
-        <div class="form-group">
-          <label for="senderName">Your Name</label>
-          <input
-            type="text"
-            id="senderName"
-            class="cyber-input"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="senderEmail">Your Email</label>
-          <input
-            type="email"
-            id="senderEmail"
-            class="cyber-input"
-            required
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="senderMessage">Message</label>
-          <textarea
-            id="senderMessage"
-            class="cyber-input"
-            rows="6"
-            required
-          ></textarea>
-        </div>
-
-        <button
-          type="submit"
-          class="btn btn-primary"
-          id="submitBtn"
-        >
-          Send Message
-        </button>
-
-      </form>
-
-    </div>
-
   </div>
 </section>
 
-<footer>
-  <div class="footer-text">Sara Alhetela · AI Engineer </div>
-  <div class="footer-socials">
-    <a href="https://github.com/saraalhetela" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/sara-a-262b55234" target="_blank">LinkedIn</a>
-    <a href="mailto:Alhetelasara@gmail.com">Email</a>
+<footer class="theme-dark">
+  <div class="section-inner footer-inner">
+    <div class="footer-text">Sara Alhetela · AI Engineer</div>
+    <div class="footer-socials">
+      <a href="https://github.com/saraalhetela" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/sara-a-262b55234" target="_blank">LinkedIn</a>
+      <a href="mailto:Alhetelasara@gmail.com">Email</a>
+    </div>
   </div>
-</footer><script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" onerror="console.warn('EmailJS CDN blocked')"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
