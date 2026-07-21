@@ -32,6 +32,6 @@ portfolio/
 ├── js/
 │   └── script.js        # Interactive scripts
 ├── files/
-│   └── Sara Alhetela — CV.pdf  # Professional resume
+│   └── Sara_Alhetela_CV.pdf  # Professional resume
 └── favicon_ico/
     └── favicon.ico         # Browser tab icon
