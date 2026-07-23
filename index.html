@@ -68,7 +68,7 @@
       <div class="metric-sub">Google Cloud · Udemy · Kaggle</div>
     </div>
     <div class="metric-card" data-reveal="blur" data-delay="4">
-      <h2><span class="counter-val" data-target="2" data-suffix="">0</span></h2>
+      <h2><span class="counter-val" data-target="3" data-suffix="">0</span></h2>
       <p>Projects made</p>
       <div class="metric-sub">And more on the way</div>
     </div>
@@ -138,6 +138,25 @@
         <div class="pc-preview">
           <div class="pc-preview-inner">
             <canvas id="tradingCanvas"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="project-card">
+        <div class="pc-content">
+          <div>
+            <div class="card-tags">
+              <span class="tag">Python</span><span class="tag">PyTorch</span>
+              <span class="tag">Deep RL</span><span class="tag">DQN</span><span class="tag">Hackathon · Gold</span>
+            </div>
+            <h3>GPU Cluster Scheduler — RL Agent</h3>
+            <p class="card-desc">Built at a hackathon — reused the Dueling DQN architecture from the trading agent project above to meet the time constraint. A Dueling DQN agent that learns per-job GPU allocation on a shared, capacity-constrained cluster, trained under a scarcity signal derived from real Alibaba PAI cluster job traces. Balances GPU cost against deadline risk across a 9-dimensional state space and 5 discrete allocation actions, using N-step Double DQN with a replay buffer and target network. Evaluated against FCFS, Always-Max, and Priority heuristics on the same shared 32-GPU pool and job queue. Ranked Gold.</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-stat">Deadline success: <span>87.0%</span> &nbsp;·&nbsp; vs. best baseline: <span>+17.0 pts</span> &nbsp;·&nbsp; Cost: <span>-$42.49</span> &nbsp;·&nbsp; Result: <span>Gold</span></div>
+            <a href="https://github.com/saraalhetela/GPU-Cluster-Scheduler" target="_blank" class="card-link">View on GitHub ↗</a>
+            <a href="https://try.ka.nz/ai/saraalhetela" target="_blank" class="card-link">Hackathon Portfolio (Kanz) ↗</a>
           </div>
         </div>
       </div>
