@@ -165,6 +165,7 @@ const projectsObs = new IntersectionObserver((entries) => {
     if (e.isIntersecting) {
       startPipeline();
       drawTradingChart();
+      startGpuCluster();
       projectsObs.unobserve(e.target);
     }
   });
@@ -311,6 +312,51 @@ function drawTradingChart() {
   cx.textAlign = 'left'; cx.fillText('Test Set: Cumulative Reward vs Buy & Hold', pad.left, 16);
 }
 window.addEventListener('resize', () => { chartFired = false; drawTradingChart(); });
+
+/* ═══════════════════════════════════════════════════
+   GPU CLUSTER SCHEDULER — DUAL-RING COMPARISON
+═══════════════════════════════════════════════════ */
+let gpuFired = false;
+function startGpuCluster() {
+  if (gpuFired) return; gpuFired = true;
+
+  const agentArc = document.getElementById('agentArc');
+  const baseArc = document.getElementById('baseArc');
+  const agentPct = document.getElementById('agentPct');
+  const basePct = document.getElementById('basePct');
+  const agentCost = document.getElementById('agentCost');
+  const baseCost = document.getElementById('baseCost');
+  const savedVal = document.getElementById('gpuSavedVal');
+  if (!agentArc || !baseArc) return;
+
+  const CIRCUMFERENCE = 364.4;
+  const AGENT_SUCCESS = 87.0;
+  const BASE_SUCCESS = 70.0;
+  const AGENT_COST = 584.62;
+  const BASE_COST = 626.11;
+  const SAVED = BASE_COST - AGENT_COST;
+
+  function animateArc(el, target) {
+    el.style.strokeDashoffset = CIRCUMFERENCE - (target / 100) * CIRCUMFERENCE;
+  }
+  function animateNum(el, target, fmt, duration) {
+    const steps = 40, inc = target / steps, interval = duration / steps;
+    let cur = 0;
+    const iv = setInterval(() => {
+      cur = Math.min(cur + inc, target);
+      el.innerText = fmt(cur);
+      if (cur >= target) clearInterval(iv);
+    }, interval);
+  }
+
+  animateArc(agentArc, AGENT_SUCCESS);
+  animateArc(baseArc, BASE_SUCCESS);
+  animateNum(agentPct, AGENT_SUCCESS, v => Math.round(v) + '%', 1200);
+  animateNum(basePct, BASE_SUCCESS, v => Math.round(v) + '%', 1200);
+  animateNum(agentCost, AGENT_COST, v => '$' + v.toFixed(2), 1400);
+  animateNum(baseCost, BASE_COST, v => '$' + v.toFixed(2), 1400);
+  animateNum(savedVal, SAVED, v => '$' + v.toFixed(2), 1600);
+}
 
 /* ═══════════════════════════════════════════════════
    EMAILJS
