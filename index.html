@@ -143,7 +143,7 @@
       </div>
 
       <!-- Card 3 -->
-      <div class="project-card">
+      <div class="project-card has-preview">
         <div class="pc-content">
           <div>
             <div class="card-tags">
@@ -157,6 +157,39 @@
             <div class="card-stat">Deadline success: <span>87.0%</span> &nbsp;·&nbsp; vs. best baseline: <span>+17.0 pts</span> &nbsp;·&nbsp; Cost: <span>-$42.49</span> &nbsp;·&nbsp; Result: <span>Gold</span></div>
             <a href="https://github.com/saraalhetela/GPU-Cluster-Scheduler" target="_blank" class="card-link">View on GitHub ↗</a>
             <a href="https://try.ka.nz/ai/saraalhetela" target="_blank" class="card-link">Hackathon Portfolio (Kanz) ↗</a>
+          </div>
+        </div>
+        <div class="pc-preview">
+          <div class="pc-preview-inner">
+            <div class="gpu-cluster-preview" id="gpuClusterPreview">
+              <div class="gp-title">Agent vs. Priority Baseline</div>
+              <div class="gpu-rings">
+                <div class="gpu-ring-col">
+                  <svg width="140" height="140" viewBox="0 0 140 140">
+                    <circle cx="70" cy="70" r="58" fill="none" stroke="rgba(251,250,245,0.08)" stroke-width="10"/>
+                    <circle id="agentArc" class="gpu-ring-arc gpu-ring-agent" cx="70" cy="70" r="58" fill="none" stroke-width="10" stroke-linecap="round" transform="rotate(-90 70 70)" stroke-dasharray="364.4" stroke-dashoffset="364.4"/>
+                    <text x="70" y="64" text-anchor="middle" class="gpu-ring-pct gpu-ring-pct-agent" id="agentPct">0%</text>
+                    <text x="70" y="84" text-anchor="middle" class="gpu-ring-label">RL agent</text>
+                  </svg>
+                  <div class="gpu-ring-cost-label">GPU cost</div>
+                  <div class="gpu-ring-cost gpu-ring-cost-agent" id="agentCost">$0.00</div>
+                </div>
+                <div class="gpu-ring-col">
+                  <svg width="140" height="140" viewBox="0 0 140 140">
+                    <circle cx="70" cy="70" r="58" fill="none" stroke="rgba(251,250,245,0.08)" stroke-width="10"/>
+                    <circle id="baseArc" class="gpu-ring-arc gpu-ring-base" cx="70" cy="70" r="58" fill="none" stroke-width="10" stroke-linecap="round" transform="rotate(-90 70 70)" stroke-dasharray="364.4" stroke-dashoffset="364.4"/>
+                    <text x="70" y="64" text-anchor="middle" class="gpu-ring-pct" id="basePct">0%</text>
+                    <text x="70" y="84" text-anchor="middle" class="gpu-ring-label">priority baseline</text>
+                  </svg>
+                  <div class="gpu-ring-cost-label">GPU cost</div>
+                  <div class="gpu-ring-cost" id="baseCost">$0.00</div>
+                </div>
+              </div>
+              <div class="gpu-stats">
+                <div class="gpu-stat-label">Cost saved by the agent</div>
+                <div class="gpu-stat-val" id="gpuSavedVal">$0.00</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
