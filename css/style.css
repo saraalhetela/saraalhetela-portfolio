@@ -280,6 +280,7 @@ section, footer {
 [data-delay="11"]  { transition-delay: 0.66s; }
 [data-delay="12"]  { transition-delay: 0.72s; }
 [data-delay="13"]  { transition-delay: 0.78s; }
+[data-delay="14"]  { transition-delay: 0.84s; }
 
 /* ── PROJECTS LIST ── */
 .projects-list { display: flex; flex-direction: column; gap: 3rem; }
@@ -456,18 +457,6 @@ section, footer {
 /* the 3 featured certs render larger, in accent-light */
 .cert-card-new.cert-big { grid-column: span 2; min-height: 290px; background: var(--accent-light); }
 @media (max-width: 560px) { .cert-card-new.cert-big { grid-column: span 1; } }
-
-/* when the cert count doesn't divide evenly, center the trailing lone card */
-.cert-grid-cards > .cert-card-new:last-child { grid-column: 1 / -1; margin: 0 auto; }
-.cert-grid-cards > .cert-card-new:last-child:not(.cert-big) { width: 25%; }
-.cert-grid-cards > .cert-card-new:last-child.cert-big { width: 50%; }
-@media (max-width: 900px) {
-  .cert-grid-cards > .cert-card-new:last-child:not(.cert-big) { width: 50%; }
-  .cert-grid-cards > .cert-card-new:last-child.cert-big { width: 75%; }
-}
-@media (max-width: 560px) { .cert-grid-cards > .cert-card-new:last-child { width: 100%; grid-column: span 1; } }
-.cert-big .cert-card-body { padding: 1.4rem 1.6rem 1.7rem; }
-.cert-big .cert-card-name { font-size: 1.2rem; font-weight: 600; line-height: 1.32; margin-bottom: 1rem; }
 
 /* unified hover: every card — big or small, sage or accent-light — goes to a single dark-ink treatment */
 .cert-card-new:hover { border-color: var(--accent-ink); background: var(--accent-ink); }
