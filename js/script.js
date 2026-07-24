@@ -329,7 +329,7 @@ function startGpuCluster() {
   const savedVal = document.getElementById('gpuSavedVal');
   if (!agentArc || !baseArc) return;
 
-  const CIRCUMFERENCE = 364.4;
+  const CIRCUMFERENCE = 389.6;
   const AGENT_SUCCESS = 87.0;
   const BASE_SUCCESS = 70.0;
   const AGENT_COST = 584.62;
@@ -344,7 +344,7 @@ function startGpuCluster() {
     let cur = 0;
     const iv = setInterval(() => {
       cur = Math.min(cur + inc, target);
-      el.innerText = fmt(cur);
+      el.textContent = fmt(cur);
       if (cur >= target) clearInterval(iv);
     }, interval);
   }
